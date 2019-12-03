@@ -2,6 +2,7 @@ var txt = document.getElementById("texto")
 document.addEventListener("keyup", eventoteclado)
 var resul = document.getElementById("resul")
 var c = 0
+var cr //esta variable es para verifica el resultado total se le añadio un numero para asi no colocar un resulrado de ecuacion incorresto
 var ids = 1 //variable de id de span de resul
 var re //resultado escrito
 txt.focus()
@@ -14,7 +15,7 @@ function insert(num){
 // funcion de borrado
 function limpiar(){
     if (c == 1) {
-        resul.innerHTML = resul.innerHTML + "<br>" + "<span id=" + ids + ">" + re + " = " + txt.value
+        resul.innerHTML = resul.innerHTML + "<br>" + "<span id=" + ids + ">" + re + " = " + cr
     }
     txt.value = "";
     c = 0
@@ -35,7 +36,8 @@ function eventoteclado (teclado){
 // boton calcular
 function equal(){
     var total = eval(txt.value)
-    if (total != undefined && total != txt.value){
+    if(total != undefined && total != txt.value){
+        cr = total
         re = txt.value
         txt.value = total
         c = 1
